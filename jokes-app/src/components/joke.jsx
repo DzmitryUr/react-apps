@@ -17,14 +17,12 @@ const Joke = ({ url }) => {
       }
 
       const data = await response.json();
-
       setText(data.value);
     } catch (error) {
       console.error(error);
-      setText("Error during connection. Try again later.");
+      setText("Error in connection. Try again later");
     }
   };
-
   return (
     <div className="joke">
       <span>&#128512; &#128512; &#128512;</span>

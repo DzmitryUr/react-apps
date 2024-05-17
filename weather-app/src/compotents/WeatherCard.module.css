@@ -1,0 +1,28 @@
+.container {
+  background-color: #3232db;
+  color: #fff;
+  padding: 1rem;
+  width: 300px;
+  border-radius: 30px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: left;
+}
+
+.image {
+  max-width: 150px;
+}
+
+.current {
+  margin-bottom: 0;
+}
+
+.temperature {
+  font-size: 2rem;
+  font-weight: bold;
+  padding-right: 2rem;
+}

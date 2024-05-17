@@ -1,22 +1,15 @@
 import { useEffect, useState } from "react";
+import Autocomplete from "react-google-autocomplete";
 import styles from "./Weather.module.css";
-import { WEATHER_COORDS_URL, WEATHER_IMAGES_URL } from "../constants";
+import { WEATHER_COORDS_URL } from "../constants";
+import WeatherCard from "./WeatherCard";
 
-const getFormattedDate = () => {
-  const currentDate = new Date();
-  const options = {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  };
-  return currentDate.toLocaleString("en-US", options);
-};
+const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(fetchCoordinatesData, setError);
@@ -40,6 +33,7 @@ const Weather = () => {
   };
 
   const fetchData = async (lat, long) => {
+    setLoading(true);
     try {
       const response = await fetch(
         `${WEATHER_COORDS_URL}/?lat=${lat}&lon=${long}&units=metric&appid=${
@@ -47,6 +41,7 @@ const Weather = () => {
         }`
       );
 
+      setLoading(false);
       if (!response.ok) {
         setErrorMessage("Error in response. Try again later");
       }
@@ -56,8 +51,18 @@ const Weather = () => {
       setErrorMessage("");
     } catch (error) {
       console.error(error);
+      setLoading(false);
       setErrorMessage("Error in connection. Try again later");
     }
+  };
+
+  const onPlaceSelected = (place) => {
+    console.log(place);
+    if (!place || !place.geometry || !place.geometry.location) return;
+    const lat = place.geometry.location.lat();
+    const long = place.geometry.location.lng();
+    console.log(lat, long);
+    fetchData(lat, long);
   };
 
   return (
@@ -67,49 +72,13 @@ const Weather = () => {
           <span>{errorMessage}</span>
         </div>
       )}
-      {weatherData && weatherData.main && (
-        <div className={styles.container}>
-          <h2>
-            {weatherData.name}, <span>{weatherData.sys.country}</span>
-          </h2>
-          <h3>
-            <span>{getFormattedDate()}</span>
-          </h3>
-          <h3 className={styles.current}>Current Weather</h3>
-          <div className={styles.row}>
-            <img
-              className={styles.image}
-              src={`${WEATHER_IMAGES_URL}/${weatherData.weather[0].icon}@2x.png`}
-              alt={weatherData.weather[0].description}
-            />
-            <span className={styles.temperature}>
-              {Math.round(weatherData.main.temp)}
-              <sup>&deg;c</sup>
-            </span>
-
-            <div className={styles.description}>
-              <span>{weatherData.weather[0].main}</span>
-              <br />
-              <span>
-                Feels like {Math.round(weatherData.main.feels_like)}
-                <sup>&deg;</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className={styles.row}>
-            <div>
-              Wind <br /> {Math.round(weatherData.wind.speed)} m/s
-            </div>
-            <div>
-              Humidity <br /> {weatherData.main.humidity}%
-            </div>
-            <div>
-              Pressure <br /> {weatherData.main.pressure} mb
-            </div>
-          </div>
-        </div>
-      )}
+      <Autocomplete
+        className={styles.autocomplete}
+        apiKey={GOOGLE_API_KEY}
+        onPlaceSelected={onPlaceSelected}
+      />
+      {loading && <div className={styles.loading}>Loading...</div>}
+      {weatherData && weatherData.main && <WeatherCard data={weatherData} />}
     </div>
   );
 };

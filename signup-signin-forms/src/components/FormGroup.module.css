@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid lightblue;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.input:focus-visible {
+  outline: 1px solid blue;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+}

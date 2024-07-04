@@ -1,8 +1,8 @@
-import SignUpForm from './components/SignUpForm';
+import Forms from './components/Forms';
 import './App.css';
 
 function App() {
-  return <SignUpForm />;
+  return <Forms />;
 }
 
 export default App;

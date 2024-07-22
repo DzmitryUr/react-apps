@@ -1,0 +1,55 @@
+.dice-container {
+  min-width: 30rem;
+  max-width: 80rem;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 0 5px gray;
+  border-radius: 5px;
+}
+
+.dice-container button {
+  padding: 1rem 2rem;
+  background-color: #272727;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.dice-container button:hover {
+  background-color: black;
+}
+
+.dice {
+  display: flex;
+  justify-content: center;
+}
+
+.die {
+  font-size: 10rem;
+  padding: 1rem;
+  color: darkred;
+}
+
+.die-shaking {
+  animation: shaking 0.15s infinite;
+}
+
+@keyframes shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

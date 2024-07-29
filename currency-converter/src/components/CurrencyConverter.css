@@ -1,0 +1,28 @@
+.currency-converter {
+  min-width: 30rem;
+  max-width: 80rem;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 0 5px gray;
+  border-radius: 5px;
+}
+
+.currency-converter form {
+  display: flex;
+  justify-content: space-around;
+}
+
+.currency-converter label {
+  display: block;
+}
+
+.currency-converter input,
+.currency-converter select {
+  padding: 5px;
+  margin: 5px;
+  font-size: 1rem;
+}
+
+.error {
+  color: red;
+}

@@ -1,0 +1,42 @@
+.search-container {
+  min-width: 30rem;
+  max-width: 80rem;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 0 5px gray;
+  border-radius: 5px;
+}
+
+.search-container input {
+  padding: 0.7rem;
+  margin: 0.2rem;
+  font-size: 1rem;
+}
+
+.search-container button {
+  margin: 0.5rem;
+  padding: 0.7rem;
+  font-size: 1.2rem;
+  background-color: green;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+.search-container button:hover {
+  background-color: darkgreen;
+}
+
+.search-container pre {
+  font-size: 1rem;
+}
+
+.search-container hr {
+  margin-top: 0.5rem;
+  width: 70%;
+}
+
+.error {
+  color: red;
+}

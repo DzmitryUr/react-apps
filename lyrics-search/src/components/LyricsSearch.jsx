@@ -27,7 +27,7 @@ function LyricsSearch({ url }) {
 
   return (
     <div className='search-container'>
-      <h2>Lyrics Finder</h2>
+      <h2>Lyrics Search</h2>
       <form onSubmit={searchLyrics}>
         <input
           type='text'

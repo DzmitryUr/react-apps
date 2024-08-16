@@ -5,7 +5,7 @@
 #### 1. Install dependencies
 
 ```
-npm install --save-dev vitest @testing-library/react @testing-library/jest-dom jsdom
+npm install --save-dev vitest @testing-library/react @testing-library/jest-dom jsdom @vitest/coverage-v8
 ```
 
 #### 2. Update vite.config.js
@@ -13,16 +13,30 @@ npm install --save-dev vitest @testing-library/react @testing-library/jest-dom j
 ```
 test: {
     environment: 'jsdom',
-    setupFiles: ['./test/setup.js'],
+    setupFiles: ['./tests/setup.js'],
     globals: true,
   },
 ```
 
-#### 3. Update scripts section in package.json
+### 3. Create tests/setup.js
+
+```
+import { afterEach } from 'vitest';
+import { cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom/vitest';
+
+afterEach(() => {
+  cleanup();
+});
+```
+
+#### 4. Update scripts section in package.json
 
 ```
     "test": "vitest run",
     "test:watch": "vitest"
 ```
 
-### 4 Create .spec.jsx or .test.jsx files with unit tests and run test script
+#### 5. Update .gitignore by adding coverage
+
+#### 6. Create .spec.jsx or .test.jsx files with unit tests and run test script

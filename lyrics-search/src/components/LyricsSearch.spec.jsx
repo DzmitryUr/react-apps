@@ -13,7 +13,7 @@ describe('LyricsSearch component', () => {
     vi.clearAllMocks();
   });
 
-  test('renders the component correctly', () => {
+  test('should render the component correctly', () => {
     render(<LyricsSearch url={mockUrl} />);
 
     expect(screen.getByText(/Lyrics Search/i)).toBeInTheDocument();
@@ -22,7 +22,7 @@ describe('LyricsSearch component', () => {
     expect(screen.getByRole('button', { name: /Search/i })).toBeInTheDocument();
   });
 
-  test('shows error when API call fails', async () => {
+  test('should show error when API call fails', async () => {
     const errorMessage = 'Request failed with status code 404';
     Axios.get.mockRejectedValueOnce(new Error(errorMessage));
 
@@ -42,7 +42,7 @@ describe('LyricsSearch component', () => {
     });
   });
 
-  test('displays lyrics when API call succeeds', async () => {
+  test('should display lyrics when API call succeeds', async () => {
     const mockLyrics = 'Sample lyrics';
     Axios.get.mockResolvedValueOnce({ data: { lyrics: mockLyrics } });
 
@@ -62,7 +62,7 @@ describe('LyricsSearch component', () => {
     });
   });
 
-  test('does not call API if artist or song is empty', async () => {
+  test('shoulf do not call API if artist or song is empty', async () => {
     render(<LyricsSearch url={mockUrl} />);
 
     fireEvent.change(screen.getByPlaceholderText(/Artist Name/i), {

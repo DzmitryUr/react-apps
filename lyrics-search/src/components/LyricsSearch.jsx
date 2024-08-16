@@ -10,7 +10,8 @@ function LyricsSearch({ url }) {
 
   const searchLyrics = async (event) => {
     event.preventDefault();
-    if (!artist === '' || song === '') {
+    console.log('artist=', artist);
+    if (artist === '' || song === '') {
       return;
     }
     setLyrics('');

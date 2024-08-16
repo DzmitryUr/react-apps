@@ -1,8 +1,28 @@
-# React + Vite
+## Unit Tests
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### How to add unit tests to the project
 
-Currently, two official plugins are available:
+#### 1. Install dependencies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+npm install --save-dev vitest @testing-library/react @testing-library/jest-dom jsdom
+```
+
+#### 2. Update vite.config.js
+
+```
+test: {
+    environment: 'jsdom',
+    setupFiles: ['./test/setup.js'],
+    globals: true,
+  },
+```
+
+#### 3. Update scripts section in package.json
+
+```
+    "test": "vitest run",
+    "test:watch": "vitest"
+```
+
+### 4 Create .spec.jsx or .test.jsx files with unit tests and run test script

@@ -23,13 +23,7 @@ test: {
 #### 3. Create tests/setup.js
 
 ```
-import { afterEach } from 'vitest';
-import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
-
-afterEach(() => {
-  cleanup();
-});
 ```
 
 #### 4. Update scripts section in package.json

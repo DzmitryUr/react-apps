@@ -21,11 +21,11 @@ export default function Weather() {
         Your Coordinates
       </h2>
       <p className='text-white-700 text-lg'>
-        <span className='font-semibold'>Latitude:</span> {geoData.latitude - 7}
+        <span className='font-semibold'>Latitude:</span> {geoData.latitude}
       </p>
       <p className='text-white-700 text-lg'>
-        <span className='font-semibold'>Longitude:</span>{' '}
-        {geoData.longitude - 7}
+        <span className='font-semibold'>Longitude:</span>
+        {geoData.longitude}
       </p>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFetchWeather } from '../hooks/useFetchWeather';
 import useGeolocation from '../hooks/useGeolocation';
+import WeatherCard from './WeatherCard';
 
 export default function Weather() {
   const { loading, error, data: geoData } = useGeolocation();
@@ -65,6 +66,8 @@ export default function Weather() {
         </div>
       )}
 
+      {/* {currentWeather && <WeatherCard data={currentWeather} />}
+
       {forecast && (
         <div className='bg-blue-100 p-4 rounded-lg shadow-lg'>
           <h2 className='text-lg font-bold mb-4'>Forecast</h2>
@@ -80,7 +83,7 @@ export default function Weather() {
             ))}
           </ul>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

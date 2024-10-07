@@ -35,7 +35,7 @@ export default function Weather() {
   };
 
   return (
-    <div>
+    <div className='p-6 bg-[url("/src/assets/clouds.jpg")]'>
       {error && <p>{error.message}</p>}
       {apiError && <p>{apiError.message}</p>}
       <form onSubmit={handleSearch}>

@@ -23,6 +23,7 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  @apply bg-gradient-to-r from-purple-500 to-pink-500;
 }
 
 @media (prefers-color-scheme: light) {

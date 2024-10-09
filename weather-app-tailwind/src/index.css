@@ -23,9 +23,7 @@ body {
   justify-content: center;
   /* min-width: 320px;
   min-height: 100vh; */
-  @apply bg-cover bg-cloud-pattern bg-center bg-fixed min-h-screen;
-  /* @apply bg-gradient-to-b from-blue-300 to-blue-500 min-h-screen; */
-  /* background-image: url('/src/assets/sky.jpg'); */
+  @apply bg-gradient-to-b from-blue-300 to-blue-500 min-h-screen;
 }
 
 @media (prefers-color-scheme: light) {

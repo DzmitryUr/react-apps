@@ -4,6 +4,8 @@ const weatherUrl = 'https://api.openweathermap.org/data/2.5';
 const currentWeatherUrl = `${weatherUrl}/weather`;
 const forecastWeatherUrl = `${weatherUrl}/forecast`;
 
+export const weatherIconUrl = 'https://openweathermap.org/img/wn/';
+
 const apiKey = import.meta.env.VITE_API_KEY;
 
 export const fetchWeatherByCoords = async (geoData) => {

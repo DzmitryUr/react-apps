@@ -21,8 +21,7 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  min-width: 320px;
-  min-height: 100vh;
+  @apply bg-gradient-to-b from-blue-300 to-blue-500 min-h-screen;
 }
 
 @media (prefers-color-scheme: light) {

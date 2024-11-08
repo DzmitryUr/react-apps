@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  @apply bg-gradient-to-b from-blue-300 to-blue-500 min-h-screen;
+}

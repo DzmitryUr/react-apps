@@ -1,0 +1,9 @@
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse; /* Ensure the border styling looks clean */
+}

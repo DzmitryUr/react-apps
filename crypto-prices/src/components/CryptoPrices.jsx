@@ -1,22 +1,20 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useLoaderData } from 'react-router';
+
 import './CryptoPrices.css';
 
-export function CryptoPrices() {
-  const [cryptos, setCryptos] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios('https://api.coincap.io/v2/assets');
-        console.log(result);
-        setCryptos(result.data.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+export async function clientLoader() {
+  try {
+    const result = await axios('https://api.coincap.io/v2/assets');
+    console.log(result);
+    return result.data.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
 
-    fetchData();
-  }, []);
+export function CryptoPrices() {
+  const cryptos = useLoaderData();
   return (
     <div>
       <h2>Crypto Prices</h2>
@@ -31,15 +29,18 @@ export function CryptoPrices() {
           </tr>
         </thead>
         <tbody>
-          {cryptos.map((crypto) => (
-            <tr key={crypto.id}>
-              <td>{crypto.rank}</td>
-              <td>{crypto.name}</td>
-              <td>{crypto.symbol}</td>
-              <td>{parseFloat(crypto.priceUsd).toFixed(2)}</td>
-              <td>{parseFloat(crypto.changePercent24Hr).toFixed(4)}</td>
-            </tr>
-          ))}
+          {cryptos &&
+            cryptos.map((crypto) => (
+              <tr key={crypto.id}>
+                <td>{crypto.rank}</td>
+                <td>
+                  <Link to={`crypto/${crypto.name}`}>{crypto.name}</Link>
+                </td>
+                <td>{crypto.symbol}</td>
+                <td>{parseFloat(crypto.priceUsd).toFixed(2)}</td>
+                <td>{parseFloat(crypto.changePercent24Hr).toFixed(4)}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

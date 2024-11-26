@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router';
 import axios from 'axios';
 import './CryptoPrices.css';
 
@@ -34,7 +35,9 @@ export function CryptoPrices() {
           {cryptos.map((crypto) => (
             <tr key={crypto.id}>
               <td>{crypto.rank}</td>
-              <td>{crypto.name}</td>
+              <td>
+                <NavLink to={`crypto/${crypto.id}`}>{crypto.name}</NavLink>
+              </td>
               <td>{crypto.symbol}</td>
               <td>{parseFloat(crypto.priceUsd).toFixed(2)}</td>
               <td>{parseFloat(crypto.changePercent24Hr).toFixed(4)}</td>

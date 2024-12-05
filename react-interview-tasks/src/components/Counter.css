@@ -1,0 +1,37 @@
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter .count {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  width: 2rem;
+}
+
+.counter button {
+  padding: 0.7rem 1.5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.counter .decrement {
+  background-color: red;
+}
+
+.counter .decrement:hover {
+  background-color: darkred;
+}
+
+.counter .increment {
+  background-color: green;
+}
+
+.counter .increment:hover {
+  background-color: darkgreen;
+}

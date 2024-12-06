@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  @apply bg-white dark:bg-gray-950;
+
+  @apply flex justify-center;
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+}

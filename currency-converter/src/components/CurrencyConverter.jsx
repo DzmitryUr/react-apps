@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './CurrencyConverter.css';
+import { useDebounce } from '../hooks/useDebounce';
 
 function CurrencyConverter({ url }) {
   const [currencies, setCurrencies] = useState([]);
@@ -9,13 +10,15 @@ function CurrencyConverter({ url }) {
   const [toCurrency, setToCurrency] = useState('EUR');
   const [convertedAmunt, setConvertedAmount] = useState(0);
 
+  const debouncedValue = useDebounce(amount, 1000);
+
   useEffect(() => {
     fetchCurrencies();
   }, []);
 
   useEffect(() => {
     fetchRate();
-  }, [amount, fromCurrency, toCurrency]);
+  }, [debouncedValue, fromCurrency, toCurrency]);
 
   const sendRequest = async (endpoint) => {
     try {
@@ -49,14 +52,14 @@ function CurrencyConverter({ url }) {
   };
 
   return (
-    <div className='currency-converter'>
+    <div className="currency-converter">
       <h2>Convert Currency</h2>
-      {error && <h2 className='error'>{error}</h2>}
+      {error && <h2 className="error">{error}</h2>}
       <form>
         <div>
           <label>Amount:</label>
           <input
-            type='number'
+            type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             required
